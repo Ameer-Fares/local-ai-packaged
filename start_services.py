@@ -29,14 +29,6 @@ def stop_existing_containers(profile=None):
     cmd.extend(["-f", "docker-compose.yml", "down"])
     run_command(cmd)
 
-def start_supabase(environment=None):
-    """Start the Supabase services (using its compose file)."""
-    print("Starting Supabase services...")
-    cmd = ["docker", "compose", "-p", "localai", "-f", "supabase/docker/docker-compose.yml"]
-    if environment and environment == "public":
-        cmd.extend(["-f", "docker-compose.override.public.supabase.yml"])
-    cmd.extend(["up", "-d"])
-    run_command(cmd)
 
 def start_local_ai(profile=None, environment=None):
     """Start the local AI services (using its compose file)."""
